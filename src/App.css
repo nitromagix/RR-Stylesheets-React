@@ -1,9 +1,12 @@
 .App {
    text-align: center;
-   border: 2px solid black;
+   border: 2px solid lightgray;
    width: 70vw;
- 
-   margin: 0 auto;
+   min-width: 320px;
+   max-width: 900px;
+   height: 600px;
+   margin: 20px auto;
+   border-radius: 3px;
   
  }
  ._nav {

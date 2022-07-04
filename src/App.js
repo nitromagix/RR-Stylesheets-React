@@ -1,4 +1,5 @@
 //
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Fragment } from "react";
 import { Nav } from "react-bootstrap";
@@ -10,23 +11,62 @@ import { StyleContext } from "./context/StyleContext";
 import "./App.css";
 
 function App() {
+   //
    const styles = {};
+   const setSelectedTab = (selection) =>
+      localStorage.setItem("selectedTab", selection);
+   const getSelectedTab = () => {
+      let tab = localStorage.getItem("selectedTab");
+      return tab ? tab : "link0";
+   };
+
    return (
       <div className="App">
          <Router>
-            <Nav fill variant="tabs" defaultActiveKey="/" className="_nav">
+            <Nav
+               fill
+               variant="tabs"
+               defaultActiveKey={getSelectedTab()}
+               className="_nav"
+            >
                <Nav.Item>
-                  <Nav.Link as={Link} to="/" eventKey="link0">Home</Nav.Link>
+                  <Nav.Link eventKey="disabled" disabled></Nav.Link>
                </Nav.Item>
                <Nav.Item>
-                  <Nav.Link as={Link} to="/1" eventKey="link1">
+                  <Nav.Link
+                     // href="#link0"
+                     as={Link}
+                     to="/"
+                     eventKey="link0"
+                     onClick={(e) => setSelectedTab("link0")}
+                  >
+                     Home
+                  </Nav.Link>
+               </Nav.Item>
+               <Nav.Item>
+                  <Nav.Link
+                     // href="#link1"
+                     as={Link}
+                     to="/1"
+                     eventKey="link1"
+                     onClick={(e) => setSelectedTab("link1")}
+                  >
                      Component 1
                   </Nav.Link>
                </Nav.Item>
                <Nav.Item>
-                  <Nav.Link as={Link} to="/2" eventKey="link2">
-                  Component 2
+                  <Nav.Link
+                     // href="#link2"
+                     as={Link}
+                     to="/2"
+                     eventKey="link2"
+                     onClick={(e) => setSelectedTab("link2")}
+                  >
+                     Component 2
                   </Nav.Link>
+               </Nav.Item>
+               <Nav.Item>
+                  <Nav.Link eventKey="disabled" disabled></Nav.Link>
                </Nav.Item>
             </Nav>
             <StyleContext.Provider value={styles}>
