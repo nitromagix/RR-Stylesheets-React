@@ -1,16 +1,42 @@
 //
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Fragment } from "react";
+import { Nav } from "react-bootstrap";
 
 import Component1 from "./components/Component1";
 import Component2 from "./components/Component2";
+import { StyleContext } from "./context/StyleContext";
 
 import "./App.css";
 
 function App() {
+   const styles = {};
    return (
       <div className="App">
-         <h1>Hello World</h1>
-         <Component1 />
-         <Component2 />
+         <Router>
+            <Nav fill variant="tabs" defaultActiveKey="/" className="_nav">
+               <Nav.Item>
+                  <Nav.Link as={Link} to="/" eventKey="link0">Home</Nav.Link>
+               </Nav.Item>
+               <Nav.Item>
+                  <Nav.Link as={Link} to="/1" eventKey="link1">
+                     Component 1
+                  </Nav.Link>
+               </Nav.Item>
+               <Nav.Item>
+                  <Nav.Link as={Link} to="/2" eventKey="link2">
+                  Component 2
+                  </Nav.Link>
+               </Nav.Item>
+            </Nav>
+            <StyleContext.Provider value={styles}>
+               <Routes>
+                  <Route path="/" element={<h1>Hello World</h1>} />
+                  <Route path="/1" element={<Component1 />} />
+                  <Route path="/2" element={<Component2 />} />
+               </Routes>
+            </StyleContext.Provider>
+         </Router>
       </div>
    );
 }
