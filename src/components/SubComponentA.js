@@ -10,7 +10,7 @@ function SubComponentA() {
    return (
       <div style={styles.common}>
          <h2 style={styles.style3}>SubComponentA</h2>
-         <p style={styles.style3}>test</p>
+         <p style={styles.style3}>Component1 and SubComponentA are using styles passed down via useContext</p>
       </div>
    );
 }
