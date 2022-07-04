@@ -1,7 +1,7 @@
 //
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Fragment } from "react";
+// import { Fragment } from "react";
 import { Nav } from "react-bootstrap";
 
 import Component1 from "./components/Component1";
@@ -12,7 +12,24 @@ import "./App.css";
 
 function App() {
    //
-   const styles = {};
+   const styles = {
+      common: { padding: "30px" },
+      style1: {
+         color: "navy",
+         fontFamily: "'Times New Roman', Times, serif",
+      },
+      style2: { color: "red", fontFamily: "'Courier New', Courier, monospace" },
+      style3: {
+         color: "green",
+         fontFamily:
+            "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif",
+      },
+      style4: {
+         color: "grey",
+         fontFamily:
+            "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+      },
+   };
    const setSelectedTab = (selection) =>
       localStorage.setItem("selectedTab", selection);
    const getSelectedTab = () => {
@@ -20,8 +37,13 @@ function App() {
       return tab ? tab : "link0";
    };
 
+
+
    return (
       <div className="App">
+         <header>
+            <h1>RR-Stylesheets-React</h1>
+         </header>
          <Router>
             <Nav
                fill
@@ -73,7 +95,7 @@ function App() {
                <Routes>
                   <Route path="/" element={<h1>Hello World</h1>} />
                   <Route path="/1" element={<Component1 />} />
-                  <Route path="/2" element={<Component2 />} />
+                  <Route path="/2" element={<Component2 styles={styles} />} />
                </Routes>
             </StyleContext.Provider>
          </Router>

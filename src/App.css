@@ -1,5 +1,8 @@
+header {
+   padding-left: 10px;
+}
+
 .App {
-   text-align: center;
    border: 2px solid lightgray;
    width: 70vw;
    min-width: 320px;
@@ -7,8 +10,13 @@
    height: 600px;
    margin: 20px auto;
    border-radius: 3px;
-  
- }
- ._nav {
-   margin-top:30px;
- }
+}
+._nav {
+
+   padding-top: 4px;
+   border-top: 1px solid lightgray;
+}
+
+.misc {
+
+}
