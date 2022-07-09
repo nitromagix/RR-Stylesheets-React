@@ -1,5 +1,6 @@
 //
-import { useEffect, useState } from "react";
+
+// import { useEffect, useState } from "react";
 // import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
@@ -12,43 +13,28 @@ import trace from "./helper";
 
 import "./App.css";
 
+const TAB_LOCAL_STORAGE_NAME = "mxjkbvlsih"
+
 function App() {
 
-////////////////////// attempt to save selected tab state (still a little buggy and not very elegant)
-
    window.onpopstate = function (event) {
-      // const t = document.querySelector("a.active");
-      // if (t) t.classList.remove("active");
       const current = document.location.pathname;
-      // trace("document.location.pathname")(current);
-      setSelectedTab(current);
-      const activeTab = document.querySelector(`[href='${current}']`);
+      setCurrentTab(current);
+   };
+
+   const setCurrentTab = (selection) => {
+      const previousTab = document.querySelector('.nav-item>a.nav-link.active');
+      previousTab.classList.remove("active");
+      const activeTab = document.querySelector(`.nav-item>a.nav-link[href='${selection}']`);
       activeTab.classList.add("active");
-      // trace("onpopstate :: event.state")(event.state);
+
+      localStorage.setItem(TAB_LOCAL_STORAGE_NAME, selection);
    };
 
-   const setSelectedTab = (selection) => {
-      const selTabs = document.querySelectorAll("a.nav-link");
-      // trace('selTabs')(selTabs);
-      // trace('selTabs.length')(selTabs.length)
-      for (let i = 0; i < selTabs.length; i++) {
-         trace("node")(selTabs[i]);
-         selTabs[i].classList.remove("active");
-      }
-
-      localStorage.setItem("selectedTab", selection);
-   };
-
-   const getSelectedTab = () => {
-      let tab = localStorage.getItem("selectedTab");
+   const getCurrentTab = () => {
+      let tab = localStorage.getItem(TAB_LOCAL_STORAGE_NAME);
       return tab ? tab : "/";
    };
-
-   ////////////////////// end attempt
-
-   useEffect(() => {
-      // trace('useEffect :: Nav.Link')(Nav.Link.eventKey)
-   },);
 
    const styles = {
       common: { padding: "10px" },
@@ -85,7 +71,7 @@ function App() {
             <Nav
                fill
                variant="tabs"
-               defaultActiveKey={getSelectedTab}
+               defaultActiveKey={getCurrentTab}
                className="_nav"
                // onSelect={(key) => alert(key)}
                // activeKey={key}
@@ -97,11 +83,10 @@ function App() {
                <Nav.Item>
                   <Nav.Link
                      href="/"
-                     id={"t0"}
                      as={Link}
                      to="/"
                      eventKey="/"
-                     onClick={(e) => setSelectedTab("/")}
+                     onClick={(e) => setCurrentTab("/")}
                   >
                      Home
                   </Nav.Link>
@@ -109,11 +94,10 @@ function App() {
                <Nav.Item>
                   <Nav.Link
                      href="/1"
-                     id={"t1"}
                      as={Link}
                      to="/1"
                      eventKey="/1"
-                     onClick={(e) => setSelectedTab("/1")}
+                     onClick={(e) => setCurrentTab("/1")}
                   >
                      Component 1
                   </Nav.Link>
@@ -121,11 +105,10 @@ function App() {
                <Nav.Item>
                   <Nav.Link
                      href="/2"
-                     id={"t2"}
                      as={Link}
                      to="/2"
                      eventKey="/2"
-                     onClick={(e) => setSelectedTab("/2")}
+                     onClick={(e) => setCurrentTab("/2")}
                   >
                      Component 2
                   </Nav.Link>
