@@ -13,10 +13,7 @@ header {
 }
 ._nav {
 
-   padding-top: 4px;
    border-top: 1px solid #dee2e6;
+   background-color: #eeeeee;
 }
 
-.misc {
-
-}
