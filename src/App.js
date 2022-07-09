@@ -13,34 +13,29 @@ import trace from "./helper";
 import "./App.css";
 
 function App() {
-   const [selTab, setSelTab] = useState("");
 
-   window.onload = function (event) {
-      trace("document.location")(document.location);
-   };
+////////////////////// attempt to save selected tab state (still a little buggy and not very elegant)
 
    window.onpopstate = function (event) {
       // const t = document.querySelector("a.active");
       // if (t) t.classList.remove("active");
       const current = document.location.pathname;
-      trace("document.location.pathname")(current);
+      // trace("document.location.pathname")(current);
       setSelectedTab(current);
       const activeTab = document.querySelector(`[href='${current}']`);
       activeTab.classList.add("active");
       // trace("onpopstate :: event.state")(event.state);
-
-      // alert(`location: ${document.location}, state: ${JSON.stringify(event.state)}`)
    };
 
    const setSelectedTab = (selection) => {
-      const selTabs = document.querySelectorAll("a");
-      trace('selTabs')(selTabs);
-      trace('selTabs.length')(selTabs.length)
-      for(let i = 0; i< selTabs.length; i++){
-         trace('node')(selTabs[i])
+      const selTabs = document.querySelectorAll("a.nav-link");
+      // trace('selTabs')(selTabs);
+      // trace('selTabs.length')(selTabs.length)
+      for (let i = 0; i < selTabs.length; i++) {
+         trace("node")(selTabs[i]);
          selTabs[i].classList.remove("active");
       }
-      // if (selTabs) selTabs.map(tab => {trace('tab')(tab);return tab.classList.remove("active")});
+
       localStorage.setItem("selectedTab", selection);
    };
 
@@ -49,9 +44,11 @@ function App() {
       return tab ? tab : "/";
    };
 
+   ////////////////////// end attempt
+
    useEffect(() => {
       // trace('useEffect :: Nav.Link')(Nav.Link.eventKey)
-   }, [selTab]);
+   },);
 
    const styles = {
       common: { padding: "10px" },
