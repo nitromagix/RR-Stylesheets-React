@@ -6,14 +6,14 @@ import SubComponentA from "./SubComponentA";
 import { StyleContext } from "../context/StyleContext";
 
 function Component1() {
-   const styles = useContext(StyleContext);
+  const styles = useContext(StyleContext);
 
-   return (
-      <div id="component1" style={styles.common}>
-         <h2 style={styles.style1}>Component1</h2>
-         <SubComponentA />
-      </div>
-   );
+  return (
+    <div id="component1" style={styles.common}>
+      <h2 style={styles.style1}>Component1</h2>
+      <SubComponentA />
+    </div>
+  );
 }
 
 export default Component1;
