@@ -4,7 +4,7 @@
 // import { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Tabs from "./components/Tabs";
+import NmxTabs from "./components/NmxTabs";
 import Component1 from "./components/Component1";
 import Component2 from "./components/Component2";
 import { StyleContext } from "./context/StyleContext";
@@ -48,7 +48,7 @@ function App() {
             <h1>RR-Stylesheets-React</h1>
          </header>
          <Router>
-            <Tabs />
+            <NmxTabs />
             <main>
                <StyleContext.Provider value={styles}>
                   <Routes>
