@@ -21,11 +21,11 @@ function Tabs() {
 
    const setActiveTab = (pathname) => {
       const previousTab = document.querySelector(".nav-item>a.nav-link.active");
-      previousTab.classList.remove("active");
+      if (previousTab) previousTab.classList.remove("active");
       const activeTab = document.querySelector(
-         `.nav-item>a.nav-link[href='${pathname}']`
+         `.nav-item>a.nav-link[data-rr-ui-event-key='${pathname}']`
       );
-      activeTab.classList.add("active");
+      if (activeTab) activeTab.classList.add("active");
 
       localStorage.setItem(CURRENT_TAB_LS_NAME, pathname);
    };
@@ -47,17 +47,22 @@ function Tabs() {
                <Nav.Link eventKey="disabled" disabled></Nav.Link>
             </Nav.Item>
             <Nav.Item>
-               <Nav.Link as={Link} to="/" eventKey="/" onClick={navItemClick}>
+               <Nav.Link as={Link} to="/?x=vnsakjy" eventKey="/" onClick={navItemClick}>
                   Home
                </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-               <Nav.Link as={Link} to="/1" eventKey="/1" onClick={navItemClick}>
+               <Nav.Link as={Link} to="/1?x=fhasuli" eventKey="/1" onClick={navItemClick}>
                   Component 1
                </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-               <Nav.Link as={Link} to="/2" eventKey="/2" onClick={navItemClick}>
+               <Nav.Link
+                  as={Link}
+                  to="/2?x=vbsdifh"
+                  eventKey="/2"
+                  onClick={navItemClick}
+               >
                   Component 2
                </Nav.Link>
             </Nav.Item>
