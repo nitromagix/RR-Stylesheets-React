@@ -1,9 +1,9 @@
 //
 
 import { Fragment } from "react";
-
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+
 import trace from "../helper";
 
 const CURRENT_TAB_LS_NAME = "mxjkbvlsih";
@@ -11,15 +11,15 @@ const CURRENT_TAB_LS_NAME = "mxjkbvlsih";
 function Tabs() {
    window.onpopstate = (e) => {
       const pathname = document.location.pathname;
-      setCurrentTab(pathname);
+      setActiveTab(pathname);
    };
 
    const navItemClick = (e) => {
       const pathname = e.target.pathname;
-      setCurrentTab(pathname);
+      setActiveTab(pathname);
    };
 
-   const setCurrentTab = (pathname) => {
+   const setActiveTab = (pathname) => {
       const previousTab = document.querySelector(".nav-item>a.nav-link.active");
       previousTab.classList.remove("active");
       const activeTab = document.querySelector(
@@ -30,9 +30,9 @@ function Tabs() {
       localStorage.setItem(CURRENT_TAB_LS_NAME, pathname);
    };
 
-   const getCurrentTab = () => {
-      let tab = localStorage.getItem(CURRENT_TAB_LS_NAME);
-      return tab ? tab : document.location.pathname;
+   const getActiveTab = () => {
+      let activeTab = localStorage.getItem(CURRENT_TAB_LS_NAME);
+      return activeTab ? activeTab : document.location.pathname;
    };
 
    return (
@@ -40,7 +40,7 @@ function Tabs() {
          <Nav
             fill
             variant="tabs"
-            defaultActiveKey={getCurrentTab}
+            defaultActiveKey={getActiveTab}
             className="_nav"
          >
             <Nav.Item>
