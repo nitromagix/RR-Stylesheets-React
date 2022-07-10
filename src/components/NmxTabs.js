@@ -8,7 +8,7 @@ import trace from "../helper";
 
 const CURRENT_TAB_LS_NAME = "mxjkbvlsih";
 
-function Tabs() {
+function NmxTabs() {
    window.onpopstate = (e) => {
       const pathname = document.location.pathname;
       setActiveTab(pathname);
@@ -74,4 +74,4 @@ function Tabs() {
    );
 }
 
-export default Tabs;
+export default NmxTabs;
