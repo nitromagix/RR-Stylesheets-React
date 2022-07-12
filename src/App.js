@@ -52,12 +52,20 @@ function App() {
               <Route
                 path="/"
                 element={
-                  <div id="home">
-                    <h1 style={styles.common}>Hello World</h1>
+                  <div style={styles.common}>
+                    <h2>Hello World</h2>
                   </div>
                 }
               />
               <Route path="/1" element={<Component1 />} />
+              <Route
+                path="/3"
+                element={
+                  <div style={styles.common}>
+                    <h2>Test</h2>
+                  </div>
+                }
+              />
               <Route path="/2" element={<Component2 styles={styles} />} />
             </Routes>
           </StyleContext.Provider>

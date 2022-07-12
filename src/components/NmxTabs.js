@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
+// import trace, { show } from "../helper";
 
 // import trace from "../helper";
 
@@ -28,10 +29,12 @@ function NmxTabs() {
     );
     if (activeTab) activeTab.classList.add("active");
 
+    // save for page refreshes
     localStorage.setItem(CURRENT_TAB_LS_NAME, pathname);
   };
 
   const getActiveTab = () => {
+    // for setting tab on page load (app init & page refreshes)
     let activeTab = localStorage.getItem(CURRENT_TAB_LS_NAME);
     return activeTab ? activeTab : document.location.pathname;
   };
