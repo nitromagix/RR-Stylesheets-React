@@ -42,7 +42,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>RR-Stylesheets-React</h1>
+        <div>header</div>
       </header>
       <Router>
         <NmxTabs />

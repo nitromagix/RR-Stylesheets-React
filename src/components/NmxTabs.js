@@ -45,11 +45,12 @@ function NmxTabs() {
       <div className="_nav">
         <Nav fill variant="tabs" defaultActiveKey={getActiveTab}>
           <Nav.Item id="searchTab">
-            <Nav.Link eventKey="disabled" disabled></Nav.Link>
+            <Nav.Link eventKey="disabled" disabled>
+              {" "}
+              <strong>NMX</strong>
+            </Nav.Link>
           </Nav.Item>
-          <Nav.Item id="searchTab">
-            <Nav.Link eventKey="disabled" disabled></Nav.Link>
-          </Nav.Item>
+          <Nav.Item id="searchTab"></Nav.Item>
           <Nav.Item>
             <Nav.Link
               as={Link}
@@ -57,7 +58,7 @@ function NmxTabs() {
               eventKey="/"
               onClick={navItemClick}
             >
-              Home
+              HOME
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -67,7 +68,7 @@ function NmxTabs() {
               eventKey="/1"
               onClick={navItemClick}
             >
-              Here
+              HERE
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -77,7 +78,7 @@ function NmxTabs() {
               eventKey="/2"
               onClick={navItemClick}
             >
-              There
+              THERE
             </Nav.Link>
           </Nav.Item>
           {/* <Nav.Item id="searchTab">

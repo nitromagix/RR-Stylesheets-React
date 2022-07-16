@@ -20,6 +20,10 @@ header {
   display: inline-block;
 }
 
+.nav-item:first-child {
+  text-align: left !important;
+}
+
 .nav-item:last-child {
   margin-right: 10px !important;
 }
