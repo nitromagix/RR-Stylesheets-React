@@ -67,6 +67,9 @@ function App() {
                 }
               />
               <Route path="/2" element={<Component2 styles={styles} />} />
+              <Route path="/2/0" element={<Component2 styles={styles} />} />
+              <Route path="/2/1" element={<Component2 styles={styles} />} />
+              <Route path="/2/2" element={<Component2 styles={styles} />} />
             </Routes>
           </StyleContext.Provider>
         </main>
